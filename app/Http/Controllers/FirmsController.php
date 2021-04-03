@@ -41,7 +41,7 @@ class FirmsController extends Controller
   public function store(Request $request){
 
     $validator = Validator::make($request->all(), [
-        'gstin' => ['required','string','regex:/^(0[1-9]|[1-2][0-9]|3[0-5])([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}([a-zA-Z0-9]){1}([a-zA-Z]){1}([0-9]){1}?$/'],
+        'gstin' => ['required'],
         // 'machineId' => 'required|string'
     ]);
 
