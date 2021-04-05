@@ -71,7 +71,7 @@
                 <h3>Saptsys Simple Accounting Software</h3>
                 <small>Version {{$softwareInfo['version']}}</small>
                 <hr/>
-                <a href={{ asset("/update/".str_replace('-','%20',$softwareInfo['path'])) }} download="{{str_replace('-',' ',$softwareInfo['path'])}}"><button>DOWNLOAD</button></a>
+                <a href="{{ asset("/update/".str_replace('-','%20',$softwareInfo['path'])) }}" download="{{str_replace('-',' ',$softwareInfo['path'])}}"><button>DOWNLOAD</button></a>
                 <hr/>
                 <small> {{date( 'd, M Y',strtotime($softwareInfo['releaseDate']))}}</small>
 
