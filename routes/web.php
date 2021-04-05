@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
+use App\Models\Firms;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +16,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return Response::noContent(404);
+    return view('home');
 });
