@@ -42,12 +42,14 @@
                 color: #fff;
                 outline: 2px solid #04a0c7;
                 transition: .2s ease-in;
-                outline-offset: 2px;
+                outline-offset: 0px;
+                border:3px solid #fff;
             }
             button:hover{
-                outline-offset: 10px;
+                outline-offset: 40px;
                 cursor: pointer;
                 outline: 2px double #04a0c7;
+                border:3px solid #005064;
             }
 
             .footer{
@@ -67,9 +69,11 @@
             <div class="content">
                 <img src="/favicon.ico" width="128px"/>
                 <h3>Saptsys Simple Accounting Software</h3>
+                <small>Version {{$softwareInfo['version']}}</small>
                 <hr/>
-                <a href={{ asset('/favicon.ico') }} download="SSAS Setup"><button>DOWNLOAD</button></a>
+                <a href={{ asset("/update/".str_replace('-','%20',$softwareInfo['path'])) }} download="{{str_replace('-',' ',$softwareInfo['path'])}}"><button>DOWNLOAD</button></a>
                 <hr/>
+                <small> {{date( 'd, M Y',strtotime($softwareInfo['releaseDate']))}}</small>
 
             </div>
             <div class="footer"  style="text-align: center">

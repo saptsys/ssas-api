@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
 use App\Models\Firms;
-
+use Symfony\Component\Yaml\Yaml;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,5 +16,6 @@ use App\Models\Firms;
 */
 
 Route::get('/', function () {
-    return view('home');
+    $yamlContents = Yaml::parse(file_get_contents(public_path('/update/latest.yml')));
+    return view('home',["softwareInfo"=>$yamlContents]);
 });
