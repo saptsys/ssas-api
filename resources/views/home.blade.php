@@ -73,7 +73,7 @@
                 <hr/>
                 <a href="{{ asset("/update/".str_replace('-','%20',$softwareInfo['path'])) }}" download="{{str_replace('-',' ',$softwareInfo['path'])}}"><button>DOWNLOAD</button></a>
                 <hr/>
-                <small> {{date( 'd, M Y - h:i A',strtotime($softwareInfo['releaseDate']))}}</small>
+                <small> {{date( 'd, M Y - h:i A',strtotime($softwareInfo['releaseDate']))}} IST</small>
 
             </div>
             <div class="footer"  style="text-align: center">
