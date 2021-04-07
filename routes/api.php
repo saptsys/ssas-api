@@ -20,5 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::post('/firm', "App\Http\Controllers\FirmsController@store");
+Route::post('/firm/addExtraDays', "App\Http\Controllers\FirmsController@addExtraDays");
 
 

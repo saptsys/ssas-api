@@ -15,7 +15,7 @@ class CreateFirmsTable extends Migration {
             $table->timestamp('updated_at')->default(DB::raw('NULL ON UPDATE CURRENT_TIMESTAMP'))->nullable();
 			$table->softDeletes();
 			$table->string('gstin');
-			$table->string('machine_id');
+			$table->string('machine_id')->nullable();
 			$table->datetime('start_date');
 			$table->datetime('end_date');
 			$table->enum('licence_type', array('TRIAL', 'PAID'));
