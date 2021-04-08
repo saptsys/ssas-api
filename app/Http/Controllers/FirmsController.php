@@ -52,6 +52,7 @@ class FirmsController extends Controller
         $response = [];
         $gstin = $request->get("gstin");
         $machineId = $request->get("machineId", "");
+        $machineName = $request->get("machineName", "");
 
         $existing = DB::table("firms")
             ->where(function ($query) use ($gstin, $machineId) {
@@ -61,6 +62,10 @@ class FirmsController extends Controller
 
         if ($existing) {
 
+            DB::table("firms")->where("id", $existing->id)->update([
+                "last_synced" => Carbon::now()
+            ]);
+
             if ($existing->machine_id) {
                 if ($existing->machine_id != $machineId) {
                     $err = new stdClass();
@@ -69,8 +74,11 @@ class FirmsController extends Controller
                 }
             } else {
                 $existing->machine_id = $machineId;
+                $existing->machine_name = $machineName;
+
                 DB::table("firms")->where("id", $existing->id)->update([
-                    "machine_id" => $existing->machine_id
+                    "machine_id" => $existing->machine_id,
+                    "machine_name" => $existing->machine_name
                 ]);
             }
 
@@ -94,10 +102,11 @@ class FirmsController extends Controller
             $firm = [];
             $firm['gstin'] = $gstin;
             $firm['machine_id'] =  $machineId;
+            $firm['machine_name'] =  $machineName;
             $firm['start_date'] = Carbon::now();
             $firm['end_date'] = Carbon::now()->addDays(28);
             $firm['licence_type'] = "TRIAL";
-
+            $firm['last_synced'] = Carbon::now();
 
             $lastInsertedId = DB::table("firms")->insertGetId($firm);
 
@@ -131,6 +140,10 @@ class FirmsController extends Controller
         if (!$existing) {
             abort(404);
         }
+
+        DB::table("firms")->where("id", $existing->id)->update([
+            "last_synced" => Carbon::now()
+        ]);
 
         if ($existing->licence_type === "TRIAL") {
             abort(404);
