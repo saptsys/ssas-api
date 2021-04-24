@@ -61,10 +61,11 @@ class FirmsController extends Controller
 
 
         if ($existing) {
+            $existing->machine_name = $machineName;
 
             DB::table("firms")->where("id", $existing->id)->update([
                 "last_synced" => Carbon::now(),
-                "machine_name" => $machineName
+                "machine_name" => $existing->machine_name
             ]);
 
             if ($existing->machine_id) {
@@ -75,7 +76,6 @@ class FirmsController extends Controller
                 }
             } else {
                 $existing->machine_id = $machineId;
-                $existing->machine_name = $machineName;
 
                 DB::table("firms")->where("id", $existing->id)->update([
                     "machine_id" => $existing->machine_id,
