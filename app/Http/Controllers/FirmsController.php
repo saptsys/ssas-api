@@ -63,7 +63,8 @@ class FirmsController extends Controller
         if ($existing) {
 
             DB::table("firms")->where("id", $existing->id)->update([
-                "last_synced" => Carbon::now()
+                "last_synced" => Carbon::now(),
+                "machine_name" => $machineName
             ]);
 
             if ($existing->machine_id) {
