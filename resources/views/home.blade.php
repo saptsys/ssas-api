@@ -84,13 +84,13 @@
     </head>
     <body class="antialiased">
         <video autoplay muted loop id="myVideo">
-            <source src="/ssas-bg.webm" type="video/webm">
+            <source src="/ssas-bg.mp4" type="video/mp4">
         </video>
         <div class="main-page">
             <div class="content">
                 <img src="/favicon.ico" width="128px"/>
                 <h3>Saptsys Simple Accounting Software </h3>
-                <a href="/ssas-bg.webm" target="_blank" style="margin-top: -10px;margin-bottom:15px">[ Screenshots Here ]</a>
+                <a href="/ssas-bg.mp4" target="_blank" style="margin-top: -10px;margin-bottom:15px">[ Screenshots Here ]</a>
                 <small>Version {{$softwareInfo['version']}}</small>
                 <hr/>
                 <a href="{{ asset("/update/".str_replace('-','%20',$softwareInfo['path'])) }}" download="{{str_replace('-',' ',$softwareInfo['path'])}}"><button>DOWNLOAD</button></a>
