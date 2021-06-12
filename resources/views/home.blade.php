@@ -18,6 +18,21 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
+
+            #myVideo {
+            position: fixed;
+            right: 0;
+            top: 0;
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            -webkit-filter: blur(2px);
+            -moz-filter: blur(2px);
+            -o-filter: blur(2px);
+            -ms-filter: blur(2px);
+            filter: blur(2px);
+            }
+
             .main-page{
                 height: 100vh;
                 width:100%;
@@ -25,6 +40,9 @@
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
             }
 
             .main-page .content{
@@ -65,16 +83,20 @@
         </style>
     </head>
     <body class="antialiased">
+        <video autoplay muted loop id="myVideo">
+            <source src="/ssas-bg.webm" type="video/webm">
+        </video>
         <div class="main-page">
             <div class="content">
                 <img src="/favicon.ico" width="128px"/>
-                <h3>Saptsys Simple Accounting Software</h3>
+                <h3>Saptsys Simple Accounting Software </h3>
+                <a href="/ssas-bg.webm" target="_blank" style="margin-top: -10px;margin-bottom:15px">[ Screenshots Here ]</a>
                 <small>Version {{$softwareInfo['version']}}</small>
                 <hr/>
                 <a href="{{ asset("/update/".str_replace('-','%20',$softwareInfo['path'])) }}" download="{{str_replace('-',' ',$softwareInfo['path'])}}"><button>DOWNLOAD</button></a>
                 <hr/>
                 <small> {{date( 'd, M Y - h:i A',strtotime($softwareInfo['releaseDate']))}} IST</small>
-
+                <br/><br/>
             </div>
             <div class="footer"  style="text-align: center">
                 <h3>Crafting with 🧡 by <a href="https://saptsys.com">Saptsys</a></h3>
